@@ -1,0 +1,30 @@
+.form_phonebook {
+
+    display: block;
+    padding: 5px;
+    border: 1px solid black;
+    width: 300px;
+    
+}
+
+.formBtn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.phonebook {
+    display: block;
+    margin-left: 10px;
+}
+.label_name{ 
+    display: block;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+input{
+    margin-top: 5px;
+    display: block;
+}
+
