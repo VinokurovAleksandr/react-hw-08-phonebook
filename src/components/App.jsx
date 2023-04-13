@@ -5,6 +5,7 @@ import style from './style.module.css';
 
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
+import ContactList from "./ContactList/ContactList";
 
 
 
@@ -92,7 +93,13 @@ class App extends Component {
           >Find contacts by number
           <input/>
           </label> */}
-          <ul>
+
+          <ContactList
+            visibleCont={visibleCont}
+            deliteContacts={this.deliteContacts}
+
+          />
+          {/* <ul>
             {visibleCont.map(
               ({ name,
                 id,
@@ -100,9 +107,9 @@ class App extends Component {
               {name}: {number}
             </p>
               <button onClick={() => this.deliteContacts(id)}>delete</button>
-            </li> )}
+            </li> )} */}
             
-          </ul>
+          {/* </ul> */}
       </div>
          </div>
     )
