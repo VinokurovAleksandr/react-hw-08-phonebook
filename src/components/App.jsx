@@ -62,14 +62,6 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedContacts))
   };
   
-
-  // changeFilter = (e) => {
-  //   this.setState({
-  //     filter: e.currentTarget.value
-  //   });
-
-  // }
-
   render() {
     const visibleCont = this.visibleContacts();
 
@@ -83,32 +75,14 @@ class App extends Component {
           Phonebook
         </h2>
         <ContactForm onSubmit={this.addContact} />
-  
             <div>
           <h2 className={style.name}>Contacts</h2>
           <Filter value={this.state.filter} onChange={this.handleChangeContacts} />
-          {/* <label type='text'
-            value={this.filter}
-            onChange={this.handleChangeContacts}
-          >Find contacts by number
-          <input/>
-          </label> */}
-
           <ContactList
             visibleCont={visibleCont}
             deliteContacts={this.deliteContacts}
           />
-          {/* <ul>
-            {visibleCont.map(
-              ({ name,
-                id,
-                number }) => <li key={id}><p>
-              {name}: {number}
-            </p>
-              <button onClick={() => this.deliteContacts(id)}>delete</button>
-            </li> )} */}
-            
-          {/* </ul> */}
+
       </div>
          </div>
     )

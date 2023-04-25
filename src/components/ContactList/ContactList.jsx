@@ -3,14 +3,17 @@ import style from './contactList.module.css'
 
 const ContactList = ({ visibleCont,deliteContacts }) => {
     return (
-        <ul>
+        <ul
+        className={style.list}>
             {visibleCont.map(
                 ({ name,
                     id,
-                    number }) => <li key={id}><p>
+                    number }) => <li
+                        className={style.item}
+                        key={id}><p>
                         {name}: {number}
                     </p>
-                        <button onClick={() => deliteContacts(id)}>delete</button>
+                        <button className='btn' onClick={() => deliteContacts(id)}>delete</button>
                     </li>)}
             
         </ul>
