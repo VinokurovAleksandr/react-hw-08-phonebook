@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import style from './style.module.css';
+import style from '../ContactForm/style.module.css';
 
 
 
@@ -51,7 +51,8 @@ class ContactForm extends Component {
             required
           />
           </label>
-          <label
+            <label
+              className={style.label_name}
           htmlFor={this.FormInputId}
           >
             Number

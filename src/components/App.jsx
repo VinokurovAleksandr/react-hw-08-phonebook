@@ -85,7 +85,7 @@ class App extends Component {
         <ContactForm onSubmit={this.addContact} />
   
             <div>
-          <h2>Contacts</h2>
+          <h2 className={style.name}>Contacts</h2>
           <Filter value={this.state.filter} onChange={this.handleChangeContacts} />
           {/* <label type='text'
             value={this.filter}
@@ -97,7 +97,6 @@ class App extends Component {
           <ContactList
             visibleCont={visibleCont}
             deliteContacts={this.deliteContacts}
-
           />
           {/* <ul>
             {visibleCont.map(

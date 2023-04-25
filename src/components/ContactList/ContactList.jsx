@@ -1,4 +1,5 @@
 import React from 'react'; 
+import style from './contactList.module.css'
 
 const ContactList = ({ visibleCont,deliteContacts }) => {
     return (

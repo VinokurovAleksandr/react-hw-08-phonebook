@@ -7,24 +7,33 @@
     
 }
 
-.formBtn {
+/* .formBtn {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-}
+} */
 .phonebook {
-    display: block;
-    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 10px; */
+    margin: 0 auto;
 }
-.label_name{ 
+/* .label_name{ 
     display: block;
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
 
-}
+} */
 input{
     margin-top: 5px;
     display: block;
 }
 
+.name{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
