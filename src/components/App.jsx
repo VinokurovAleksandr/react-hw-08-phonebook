@@ -61,7 +61,29 @@ class App extends Component {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedContacts))
   };
+   
+  componentDidMount() {
+
+    const contacts = localStorage.getItem("contacts");
+    const parsedContacts = JSON.parse(contacts)
+    console.log(parsedContacts);
+
+    if (parsedContacts) {
+      this.setState({contacts: parsedContacts})
+    }
+  }
   
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App componentDidUpdate');
+
+    if(this.state.contacts !== prevState.contacts)
+    
+      console.log('Update');
+    
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    
+  }
+
   render() {
     const visibleCont = this.visibleContacts();
 
