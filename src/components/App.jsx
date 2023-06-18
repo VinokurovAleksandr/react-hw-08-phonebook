@@ -84,7 +84,6 @@ export default function App ()  {
             visibleCont={visibleCont}
             deliteContacts={deliteContacts}
           />
-
       </div>
          </div>
     )
