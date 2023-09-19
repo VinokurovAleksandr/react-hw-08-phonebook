@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { nanoid } from 'nanoid';
+import React from "react";
+// import { nanoid } from 'nanoid';
 
 import style from './style.module.css';
 

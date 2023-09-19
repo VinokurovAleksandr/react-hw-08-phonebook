@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import contactsActions from '.././redux/contacts-actions/contacts-actions';
 
 import style from '../ContactForm/style.module.css';
 import { nanoid } from 'nanoid';
+import Notiflix from 'notiflix';
 import PropTypes from 'prop-types';
 
 function ContactForm({onSubmit}) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
 
   // const FormInputId = nanoid();
   
@@ -30,7 +33,9 @@ function ContactForm({onSubmit}) {
   };
   
    const handleSubmit = e => {
-        e.preventDefault();
+     e.preventDefault();
+     
+     
 
         onSubmit({id: nanoid(), name, number})
         resetForm();
@@ -96,7 +101,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(null,mapDispatchToProps)(ContactForm);
+export default connect(mapDispatchToProps)(ContactForm);
 
 
 ContactForm.propTypes = {

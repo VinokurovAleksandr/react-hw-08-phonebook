@@ -1,18 +1,45 @@
 import React from 'react'; 
 import style from './contactList.module.css'
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import contactsActions from '../redux/contacts-actions/contacts-actions'
 
-const ContactList = ({ visibleCont, deleteContacts }) => {
-   
+const ContactList = () => {
+
+    const dispatch = useDispatch();
+    const contacts = useSelector(state => state.contacts.items);
+    const filter = useSelector(state => state.filter);
+
+    const OnDeleteContacts = id => dispatch(contactsActions.deleteContacts(id));
+
+
+const visibleCont = contacts?.filter(contact => {
+    if (typeof contact.name === 'string') {
+        const normalizedName = contact.name.toLowerCase();
+        return normalizedName.includes(filter.toLowerCase()) || contact.number.includes(filter);
+    }
+    return false; 
+});
+
+//       const visibleCont = () => {
+//       const normalizedContacts = filter.toLowerCase();
+      
+//       return contacts.filter(contact =>
+//           contact.name &&
+//           typeof contact.name === 'string'
+//           && contact.name.toLowerCase().includes(normalizedContacts))
+
+//     // return contacts.filter(contact =>
+//     //   contact.name.toLowerCase().includes(normalizedContacts))
+//   };
+
+
+
     return (
         <ul
         className={style.list}>
             {visibleCont.map(
-                ({ name,
-                    id,
-                    number }) =>
+                ({ name, id, number }) =>
                     <li
                         className={style.item}
                         key={id}>
@@ -20,7 +47,9 @@ const ContactList = ({ visibleCont, deleteContacts }) => {
                         {name}: {number}
                     </p>
                         {/* <button className='btn' onClick={() => deleteContacts(id)}>delete</button> */}
-                        <button className='btn' onClick={() => deleteContacts(id)}>delete</button>
+                        <button
+                            className='btn'
+                            onClick={() => OnDeleteContacts(id)}>delete</button>
                     </li>)}
         </ul>
     )
@@ -28,13 +57,18 @@ const ContactList = ({ visibleCont, deleteContacts }) => {
 
 
 
-  const visibleContacts = (contacts, filter) => {
-    const normalizedContacts = filter.toLowerCase();
+//   const visibleContacts = (contacts, filter) => {
+//       const normalizedContacts = filter.toLowerCase();
+      
+//       return contacts.filter(contact =>
+//           contact.name &&
+//           typeof contact.name === 'string'
+//           && contact.name.toLowerCase().includes(normalizedContacts))
 
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedContacts))
-  };
-  
+//     // return contacts.filter(contact =>
+//     //   contact.name.toLowerCase().includes(normalizedContacts))
+//   };
+
 
 
 
@@ -50,25 +84,26 @@ const ContactList = ({ visibleCont, deleteContacts }) => {
 //     contacts: visibleContacts(items, filter)
 // });
 
-const mapStateToProps = state => {
-    const { filter, items } = state.contacts;
-    const visibleCont = visibleContacts(items, filter); // Використовуємо вашу логіку фільтрації тут
+// const mapStateToProps = state => {
+//     const { filter, items } = state.contacts;
+//     const visibleCont = visibleContacts(items, filter); // Використовуємо вашу логіку фільтрації тут
 
-    return {
-        visibleCont: visibleCont,
-    };
-};
+//     return {
+//         visibleCont: visibleCont,
+//     };
+// };
 
-const mapDispatchToProps = dispatch => ({
-    deleteContacts: id => dispatch(contactsActions.deleteContacts(id)),
-    // visibleCont: () => null,
-});
+// const mapDispatchToProps = dispatch => ({
+   
+//     deleteContacts: id => dispatch(contactsActions.deleteContacts(id)),
 
-
-
+// });
 
 
-export default connect(mapStateToProps,mapDispatchToProps )(ContactList);
+
+
+
+export default ContactList;
 
 ContactList.propType = {
     visibleCont: PropTypes.arrayOf(
