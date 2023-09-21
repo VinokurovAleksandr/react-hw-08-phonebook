@@ -6,9 +6,9 @@ import style from './style.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from "./ContactList/ContactList";
-import initialContacts from '../components/initialContacts.json'
+// import initialContacts from '../components/initialContacts.json'
 
-import addContact from './redux/contacts-actions/contacts-actions';
+// import addContact from './redux/contacts-actions/contacts-actions';
 
 
 export default function App ()  {

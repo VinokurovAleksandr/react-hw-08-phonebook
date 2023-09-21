@@ -1,20 +1,56 @@
 import React, { useState } from "react";
 
-import { connect, useDispatch } from 'react-redux';
-import contactsActions from '.././redux/contacts-actions/contacts-actions';
+import { useDispatch, useSelector } from 'react-redux';
+// import contactsActions from '.././redux/contacts-actions/contacts-actions';
 
 import style from '../ContactForm/style.module.css';
+import { getContacts, addContacts } from '../redux/contactsSlise';
+
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-function ContactForm({onSubmit}) {
+
+
+
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
+
+
+  
 
   // const FormInputId = nanoid();
+  
+  
+   const handleSubmit = e => {
+     e.preventDefault();
+     
+     if (contacts.some(({ name }) => name === name.toLowerCase())) {
+       Notiflix.Notify.warning(
+         `Conatct ${name} is already in your cotacts list`
+       );
+       return;
+    }
+
+    //  onSubmit({ id: nanoid(), name, number })
+     dispatch(addContacts({
+       name: name,
+       number,
+       id: nanoid()
+     }));
+
+        resetForm();
+    };
+
+  const resetForm = () => {
+    setName('');
+    setNumber('');
+    };
   
   const handleChangeAddContacts = e => {
     const { name, value } = e.target;
@@ -32,19 +68,6 @@ function ContactForm({onSubmit}) {
     }
   };
   
-   const handleSubmit = e => {
-     e.preventDefault();
-     
-     
-
-        onSubmit({id: nanoid(), name, number})
-        resetForm();
-    };
-
-  const resetForm = () => {
-    setName('');
-    setNumber('');
-    };
   
   return ( 
              <form
@@ -59,7 +82,7 @@ function ContactForm({onSubmit}) {
             type="text"
               value={name}
               onChange={handleChangeAddContacts}
-              id={name}
+              // id={name}
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -73,7 +96,7 @@ function ContactForm({onSubmit}) {
             Number
            <input
               type="tel"
-              id={number}
+              // id={number}
               value={number}
               onChange={handleChangeAddContacts}
               name="number"
@@ -92,18 +115,18 @@ function ContactForm({onSubmit}) {
 };
 
 
-const mapDispatchToProps = dispatch => ({
+// const mapDispatchToProps = dispatch => ({
  
-  onSubmit: ( {name, number} ) => {
-      const id = nanoid();
-    const contact = { id, name, number };
-    dispatch(contactsActions.addContacts(contact));
-  }
-});
+//   onSubmit: ( {name, number} ) => {
+//       const id = nanoid();
+//     const contact = { id, name, number };
+//     dispatch(contactsActions.addContacts(contact));
+//   }
+// });
 
-export default connect(mapDispatchToProps)(ContactForm);
+// export default connect(mapDispatchToProps)(ContactForm);
 
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };

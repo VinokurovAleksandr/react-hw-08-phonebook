@@ -2,24 +2,34 @@ import React from 'react';
 import style from './contactList.module.css'
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import contactsActions from '../redux/contacts-actions/contacts-actions'
+// import contactsActions from '../redux/contacts-actions/contacts-actions';
+import { getContacts, deleteContact } from '../redux/contactsSlise';
+// import {deleteContact} from '../redux/contactsSlise'
+import {getFilter} from '../redux/filterSlise';
 
 const ContactList = () => {
 
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts.items);
-    const filter = useSelector(state => state.filter);
+    const contacts = useSelector(getContacts);
+    const filter = useSelector(getFilter);
 
-    const OnDeleteContacts = id => dispatch(contactsActions.deleteContacts(id));
+    // const OnDeleteContacts = id => dispatch(deleteContact(id));
 
 
-const visibleCont = contacts?.filter(contact => {
+const visibleCont = contacts.filter(contact => {
     if (typeof contact.name === 'string') {
         const normalizedName = contact.name.toLowerCase();
-        return normalizedName.includes(filter.toLowerCase()) || contact.number.includes(filter);
+        return normalizedName.includes(filter.toLowerCase()) ||
+            contact.number.includes(filter);
     }
     return false; 
 });
+
+//       const visibleCont = contacts?.filter(
+//     contact =>
+//       contact?.name?.toLowerCase().includes(filter.toLowerCase()) ||
+//       contact?.number?.includes(filter)
+//   );
 
 //       const visibleCont = () => {
 //       const normalizedContacts = filter.toLowerCase();
@@ -39,8 +49,8 @@ const visibleCont = contacts?.filter(contact => {
         <ul
         className={style.list}>
             {visibleCont.map(
-                ({ name, id, number }) =>
-                    <li
+                ({ name, id, number }) => (
+                     <li
                         className={style.item}
                         key={id}>
                     <p>
@@ -49,8 +59,14 @@ const visibleCont = contacts?.filter(contact => {
                         {/* <button className='btn' onClick={() => deleteContacts(id)}>delete</button> */}
                         <button
                             className='btn'
-                            onClick={() => OnDeleteContacts(id)}>delete</button>
-                    </li>)}
+                            name='delete'
+                            onClick={() => dispatch(deleteContact(id))}>
+                            delete
+                        </button>
+                    </li>
+                )
+                   
+            )}
         </ul>
     )
 };
