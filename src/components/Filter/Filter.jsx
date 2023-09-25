@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './style.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 // import contactsActions from '../redux/contacts-actions/contacts-actions';
 import {getFilter, setFilter} from '../redux/filterSlise';
