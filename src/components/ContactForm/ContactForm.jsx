@@ -21,11 +21,6 @@ export default function ContactForm() {
   const contacts = useSelector(getContacts);
 
 
-
-  
-
-  // const FormInputId = nanoid();
-  
   
    const handleSubmit = e => {
      e.preventDefault();

@@ -20,7 +20,7 @@ export default function Filter() {
         type='name'
         value={filter}
         onChange={onChange}
-        >Find contacts by name2
+        >Find contacts by name
         <input />
     </label>  
     )
