@@ -1,32 +1,28 @@
 // import { combineReducers } from 'redux';
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { contactsReducer } from '../redux/contactsSlise';
 // import contactsReduser from './contacts-actions/contacts-reducer';
-import {
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER
-} from 'redux-persist';
-import persistStore from 'redux-persist/es/persistStore';
-// import storage from 'redux-persist/lib/storage';
+// import {
+//     FLUSH,
+//     REHYDRATE,
+//     PAUSE,
+//     PERSIST,
+//     PURGE,
+//     REGISTER
+// } from 'redux-persist';
+// import persistStore from 'redux-persist/es/persistStore';
 
-import { persistedContactReducer } from '../redux/contactsSlise';
+// import { persistedContactReducer } from '../redux/contactsSlise';
 import { filterReducer } from '../redux/filterSlise';
 
 
-// const contactsPersistConfig = {
-//     key: 'contacts',
-//     storage,
-//     blacklist: ['filter'],
-// };
 
-const middleware = getDefaultMiddleware({
-    serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    }
-});
+
+// const middleware = getDefaultMiddleware({
+//     serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//     }
+// });
 
 
 // const rootReducer = combineReducers({
@@ -38,13 +34,11 @@ const middleware = getDefaultMiddleware({
 
 export const store = configureStore({
     reducer: {
-        contacts: persistedContactReducer,
+        contacts: contactsReducer,
         filter: filterReducer,
     },
-    middleware,
-  
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
 
 // eslint-disable-next-line import/no-anonymous-default-export

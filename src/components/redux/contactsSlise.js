@@ -3,6 +3,10 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 
 
+
+
+
+
 const contactsState = {
    items:  [
         { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -27,6 +31,13 @@ const contactSlice = createSlice({
     },
    
 });
+
+const contactSlice = createSlise({
+    name: 'contacts', 
+    initialState: {
+        items: 
+    }
+})
 
 const contactsPersistConfig = {
     key: 'root',

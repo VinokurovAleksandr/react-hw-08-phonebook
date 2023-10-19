@@ -18,7 +18,7 @@ const ContactList = () => {
 const visibleCont = contacts.filter(contact => {
     if (typeof contact.name === 'string') {
         const normalizedName = contact.name.toLowerCase();
-        return normalizedName.includes(filter.toLowerCase()) ||
+        return normalizedName.includes(filter) ||
             contact.number.includes(filter);
     }
     return false; 
