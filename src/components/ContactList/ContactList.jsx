@@ -1,28 +1,36 @@
-import React from 'react'; 
+import React, { useEffect } from 'react'; 
 import style from './contactList.module.css'
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, deleteContact } from '../redux/contactsSlise';
+import { getContacts } from '../redux/contactsSlise';
+import {deleteContact, fetchContacts} from '../redux/operations';
 
 import {getFilter} from '../redux/filterSlise';
 
 const ContactList = () => {
 
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
-    const filter = useSelector(getFilter);
+    const {items, error, isLoading} = useSelector(getContacts);
+    const onChangeFilter = useSelector(getFilter);
 
-    // const OnDeleteContacts = id => dispatch(deleteContact(id));
+   
+
+  
+    useEffect(() => {
+        dispatch(fetchContacts());
+    }, [dispatch]);
 
 
-const visibleCont = contacts.filter(contact => {
-    if (typeof contact.name === 'string') {
-        const normalizedName = contact.name.toLowerCase();
-        return normalizedName.includes(filter) ||
-            contact.number.includes(filter);
-    }
-    return false; 
-});
+     const OnDeleteContacts = (id) => dispatch(deleteContact(id));
+
+// const visibleCont = contacts.filter(contact => {
+//     if (typeof contact.name === 'string') {
+//         const normalizedName = contact.name.toLowerCase();
+//         return normalizedName.includes(filter) ||
+//             contact.number.includes(filter);
+//     }
+//     return false; 
+// });
 
 //       const visibleCont = contacts?.filter(
 //     contact =>
@@ -30,24 +38,36 @@ const visibleCont = contacts.filter(contact => {
 //       contact?.number?.includes(filter)
 //   );
 
-//       const visibleCont = () => {
-//       const normalizedContacts = filter.toLowerCase();
+    //   const visibleContacts = () => {
+    //   const normalizedContacts = onChangeFilter.toLowerCase();
       
-//       return contacts.filter(contact =>
-//           contact.name &&
-//           typeof contact.name === 'string'
-//           && contact.name.toLowerCase().includes(normalizedContacts))
+    //   return items.filter(item =>
+    //       item.name &&
+    //       typeof item.name === 'string'
+    //       && item.name.toLowerCase().includes(normalizedContacts))
 
-//     // return contacts.filter(contact =>
-//     //   contact.name.toLowerCase().includes(normalizedContacts))
-//   };
+    // return contacts.filter(contact =>
+    //   contact.name.toLowerCase().includes(normalizedContacts))
+    // };
+    
+    const visibleContacts = items.filter(item =>
+        item.name.toLowerCase().includes(onChangeFilter.toLowerCase())
+    );
 
+        if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return "Error: " + error;
+    }
 
 
     return (
-        <ul
+        
+              <ul
         className={style.list}>
-            {visibleCont.map(
+            {visibleContacts.map(
                 ({ name, id, number }) => (
                      <li
                         className={style.item}
@@ -59,7 +79,7 @@ const visibleCont = contacts.filter(contact => {
                         <button
                             className='btn'
                             name='delete'
-                            onClick={() => dispatch(deleteContact(id))}>
+                            onClick={() => OnDeleteContacts(id)}>
                             delete
                         </button>
                     </li>
@@ -67,6 +87,7 @@ const visibleCont = contacts.filter(contact => {
                    
             )}
         </ul>
+      
     )
 };
 

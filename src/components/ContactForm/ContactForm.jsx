@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // import contactsActions from '.././redux/contacts-actions/contacts-actions';
 
 import style from '../ContactForm/style.module.css';
-import { getContacts, addContacts } from '../redux/contactsSlise';
+import { getContacts } from '../redux/contactsSlise';
+import {addContact} from '../redux/operations';
 
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
@@ -33,7 +34,7 @@ export default function ContactForm() {
     }
 
     //  onSubmit({ id: nanoid(), name, number })
-     dispatch(addContacts({
+     dispatch(addContact({
        name: name,
        number,
        id: nanoid()
