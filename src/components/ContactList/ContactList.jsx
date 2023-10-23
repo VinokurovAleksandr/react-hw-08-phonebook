@@ -10,7 +10,7 @@ import {getFilter} from '../redux/filterSlise';
 const ContactList = () => {
 
     const dispatch = useDispatch();
-    const {items, error, isLoading} = useSelector(getContacts);
+    const contacts = useSelector(getContacts);
     const onChangeFilter = useSelector(getFilter);
 
    
@@ -50,25 +50,33 @@ const ContactList = () => {
     //   contact.name.toLowerCase().includes(normalizedContacts))
     // };
     
-    const visibleContacts = items.filter(item =>
-        item.name.toLowerCase().includes(onChangeFilter.toLowerCase())
-    );
+    const visibleContacts = () => {
+        return contacts.items.filter(contact =>
+            contact.name.toLowerCase().includes(onChangeFilter.toLowerCase())
+        )
+    };
+ 
+        ;
 
-        if (isLoading) {
-        return <div>Loading...</div>;
-    }
+    //     if (isLoading) {
+    //     return <div>Loading...</div>;
+    // }
 
-    if (error) {
-        return "Error: " + error;
-    }
+    // if (error) {
+    //     return "Error: " + error;
+    // }
 
 
     return (
-        
-              <ul
+        <>
+            {contacts.isLoading && <b> Loading...</b>}
+            {contacts.error && <b>{contacts.error}</b>}
+            <div>
+                  <ul
         className={style.list}>
-            {visibleContacts.map(
-                ({ name, id, number }) => (
+            {visibleContacts().map(
+                ({ name, id, number }) => {
+                    return ( 
                      <li
                         className={style.item}
                         key={id}>
@@ -83,10 +91,15 @@ const ContactList = () => {
                             delete
                         </button>
                     </li>
-                )
+                    )
+            }
                    
             )}
         </ul>
+            </div>
+           
+        </>
+             
       
     )
 };

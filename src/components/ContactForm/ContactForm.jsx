@@ -37,7 +37,6 @@ export default function ContactForm() {
      dispatch(addContact({
        name: name,
        number,
-       id: nanoid()
      }));
 
         resetForm();

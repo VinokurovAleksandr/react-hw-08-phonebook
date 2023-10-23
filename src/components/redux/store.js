@@ -13,7 +13,7 @@ import { contactsReducer } from '../redux/contactsSlise';
 // import persistStore from 'redux-persist/es/persistStore';
 
 // import { persistedContactReducer } from '../redux/contactsSlise';
-import { filterReducer } from '../redux/filterSlise';
+// import { filterReducer } from '../redux/filterSlise';
 
 
 
@@ -35,7 +35,7 @@ import { filterReducer } from '../redux/filterSlise';
 export const store = configureStore({
     reducer: {
         contacts: contactsReducer,
-        filter: filterReducer,
+        // filter: filterReducer,
     },
 });
 
