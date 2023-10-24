@@ -1,27 +1,28 @@
-import React, { useEffect } from 'react'; 
+import { useEffect } from 'react'; 
 import style from './contactList.module.css'
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from '../redux/contactsSlise';
+import {selectContacts, selectFilter} from '../redux/selectors'
 import {deleteContact, fetchContacts} from '../redux/operations';
 
 import {getFilter} from '../redux/filterSlise';
 
 const ContactList = () => {
 
+    const contacts = useSelector(selectContacts);
+    const getFilter = useSelector(selectFilter);
+    
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
-    const onChangeFilter = useSelector(getFilter);
-
    
 
   
     useEffect(() => {
         dispatch(fetchContacts());
     }, [dispatch]);
+    
 
-
-     const OnDeleteContacts = (id) => dispatch(deleteContact(id));
+    //  const OnDeleteContacts = (id) => dispatch(deleteContact(id));
 
 // const visibleCont = contacts.filter(contact => {
 //     if (typeof contact.name === 'string') {
@@ -50,13 +51,16 @@ const ContactList = () => {
     //   contact.name.toLowerCase().includes(normalizedContacts))
     // };
     
-    const visibleContacts = () => {
-        return contacts.items.filter(contact =>
-            contact.name.toLowerCase().includes(onChangeFilter.toLowerCase())
-        )
-    };
+    // const visibleContacts = contacts.filter(contact =>
+    //     contact.name.toLowerCase().includes(getFilter.toLowerCase())
+    // );
+console.log(contacts);
+
+      const visibleContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(getFilter.toLowerCase())
+  );
  
-        ;
+        
 
     //     if (isLoading) {
     //     return <div>Loading...</div>;
@@ -69,14 +73,13 @@ const ContactList = () => {
 
     return (
         <>
-            {contacts.isLoading && <b> Loading...</b>}
-            {contacts.error && <b>{contacts.error}</b>}
+            {/* {contacts.isLoading && <b> Loading...</b>}
+            {contacts.error && <b>{contacts.error}</b>} */}
             <div>
                   <ul
         className={style.list}>
-            {visibleContacts().map(
-                ({ name, id, number }) => {
-                    return ( 
+            {visibleContacts.map(
+                ({ name, id, number }) => (
                      <li
                         className={style.item}
                         key={id}>
@@ -87,20 +90,17 @@ const ContactList = () => {
                         <button
                             className='btn'
                             name='delete'
-                            onClick={() => OnDeleteContacts(id)}>
+                            onClick={() => dispatch(deleteContact(id)) }>
                             delete
                         </button>
                     </li>
-                    )
-            }
-                   
+
+                )
+                
             )}
         </ul>
-            </div>
-           
+            </div>          
         </>
-             
-      
     )
 };
 
@@ -154,13 +154,13 @@ const ContactList = () => {
 
 export default ContactList;
 
-ContactList.propType = {
-    visibleCont: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            id: PropTypes.string.isRequired,
-            number: PropTypes.string.isRequired,
-        }).isRequired,
-    ),
-    deliteContacts: PropTypes.func.isRequired,
-};
+// ContactList.propType = {
+//     visibleCont: PropTypes.arrayOf(
+//         PropTypes.shape({
+//             name: PropTypes.string.isRequired,
+//             id: PropTypes.string.isRequired,
+//             number: PropTypes.string.isRequired,
+//         }).isRequired,
+//     ),
+//     deliteContacts: PropTypes.func.isRequired,
+// };

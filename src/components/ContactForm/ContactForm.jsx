@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 // import contactsActions from '.././redux/contacts-actions/contacts-actions';
 
 import style from '../ContactForm/style.module.css';
-import { getContacts } from '../redux/contactsSlise';
+// import { getContacts } from '../redux/contactsSlise';
+import {selectContacts} from '../redux/selectors'
 import {addContact} from '../redux/operations';
 
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 // import PropTypes from 'prop-types';
 
@@ -19,14 +20,16 @@ export default function ContactForm() {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
 
   
    const handleSubmit = e => {
      e.preventDefault();
+
+     const contact = { id: nanoid(), name, number };
      
-     if (contacts.some(({ name }) => name === name.toLowerCase())) {
+     if (contacts.find(({ name }) => name === name.toLowerCase())) {
        Notiflix.Notify.warning(
          `Conatct ${name} is already in your cotacts list`
        );
@@ -34,10 +37,9 @@ export default function ContactForm() {
     }
 
     //  onSubmit({ id: nanoid(), name, number })
-     dispatch(addContact({
-       name: name,
-       number,
-     }));
+     dispatch(addContact(
+       contact
+     ));
 
         resetForm();
     };

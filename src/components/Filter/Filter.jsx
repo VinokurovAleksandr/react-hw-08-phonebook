@@ -3,20 +3,21 @@ import style from './style.module.css';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 // import contactsActions from '../redux/contacts-actions/contacts-actions';
-import {getFilter, setFilter} from '../redux/filterSlise';
+import {setFilter } from '../redux/filterSlise';
+import {selectFilter} from '../redux/selectors'
 
 export default function Filter() {
     
     const dispatch = useDispatch();
-    const filter = useSelector(getFilter);
+    const filter = useSelector(selectFilter);
 
     const onChange = e => {
-        dispatch(setFilter(e.target.value))
+        dispatch(setFilter(e.target.value.trim()))
     };
 
     return (
         <label
-            className={style.find_contacts}
+        className={style.find_contacts}
         type='name'
         value={filter}
         onChange={onChange}
@@ -24,8 +25,6 @@ export default function Filter() {
         <input />
     </label>  
     )
-
- 
 };
 
 // const mapStateToProps = (state) => ({
