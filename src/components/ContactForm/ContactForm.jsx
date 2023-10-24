@@ -29,7 +29,7 @@ export default function ContactForm() {
 
      const contact = { id: nanoid(), name, number };
      
-     if (contacts.find(({ name }) => name === name.toLowerCase())) {
+     if (contacts.find(({ name: contactName }) => contactName.toLowerCase() === name.toLowerCase())) {
        Notiflix.Notify.warning(
          `Conatct ${name} is already in your cotacts list`
        );
@@ -74,8 +74,9 @@ export default function ContactForm() {
           <label
             className={style.label_name}
             htmlFor={name}
-          >Name
-            <input
+          >
+        <input
+          className={style.input_style}
             type="text"
               value={name}
               onChange={handleChangeAddContacts}
@@ -83,15 +84,17 @@ export default function ContactForm() {
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
+          required
+           placeholder=" Name "
           />
           </label>
             <label
               className={style.label_name}
           htmlFor={number}
           >
-            Number
-           <input
+           
+        <input
+          className={style.input_style}
               type="tel"
               // id={number}
               value={number}
@@ -99,7 +102,8 @@ export default function ContactForm() {
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
+          required
+          placeholder=" Number "
             />
           </label>
           

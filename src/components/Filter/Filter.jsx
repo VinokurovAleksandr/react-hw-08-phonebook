@@ -22,7 +22,7 @@ export default function Filter() {
         value={filter}
         onChange={onChange}
         >Find contacts by name
-        <input />
+        <input className={style.filter_input} />
     </label>  
     )
 };

@@ -1,34 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import persistReducer from 'redux-persist/es/persistReducer';
-// import storage from 'redux-persist/lib/storage';
 import {fetchContacts, addContact, deleteContact } from './operations';
 
-
-
-// const contactSlice = createSlice({
-//     name: 'contacts',
-//     initialState: contactsState,
-//     reducers: {
-//         addContacts(state, action) {
-//             state.items.unshift(action.payload);
-//         },
-//          deleteContact(state, action) {
-//         state.items = state.items.filter(
-//             contact => contact.id !== action.payload
-//         );
-//     },
-//     },
-   
-// });
-
-const initialState = {
-    contacts: {
-        items: [],
-        isLoading: false,
-        error: null,
-    },
-    // filter: '',
-};
 
 const isPendingAction = state => {
     state.isLoading = true;
@@ -49,7 +21,7 @@ const hendleAddContactsFulfilled = (state, { payload }) => {
     state.isLoading = false;
     state.error = null;
     // state.items = [payload, ...state.items];
-    state.contacts.items.puch(payload)
+    state.items.push(payload)
 };
 
 const hendleDeleteContactsFulfilled = (state, { payload }) => {
@@ -61,7 +33,11 @@ const hendleDeleteContactsFulfilled = (state, { payload }) => {
 
 const contactSlice = createSlice({
     name: 'contacts',
-    initialState,
+    initialState: {
+        items: [],
+        isLoading: false,
+        error: null,
+    },
 
  
     extraReducers: builder => {
@@ -77,25 +53,6 @@ const contactSlice = createSlice({
             .addCase(deleteContact.rejected, isRejectedAction)
     }
 });
-
-
-// const contactsPersistConfig = {
-//     key: 'root',
-//     storage,
-//     blacklist: ['filter'],
-// };
-
-// export const persistedContactReducer = persistReducer(
-//     contactsPersistConfig,
-//     contactSlice.reducer
-// );
-
-
-
-// export const { addContacts, deleteContact } = contactSlice.actions;
-
-// export const getContacts = state => state.contacts.contacts;
-// export const setFilter = contactSlice.actions.setFilter;
 
 export const contactsReducer = contactSlice.reducer;
 

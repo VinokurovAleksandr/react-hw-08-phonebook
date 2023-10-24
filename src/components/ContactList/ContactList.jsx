@@ -1,12 +1,11 @@
 import { useEffect } from 'react'; 
-import style from './contactList.module.css'
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from '../redux/contactsSlise';
+
 import {selectContacts, selectFilter} from '../redux/selectors'
 import {deleteContact, fetchContacts} from '../redux/operations';
+import style from './contactList.module.css'
 
-import {getFilter} from '../redux/filterSlise';
 
 const ContactList = () => {
 
@@ -54,7 +53,6 @@ const ContactList = () => {
     // const visibleContacts = contacts.filter(contact =>
     //     contact.name.toLowerCase().includes(getFilter.toLowerCase())
     // );
-console.log(contacts);
 
       const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(getFilter.toLowerCase())
