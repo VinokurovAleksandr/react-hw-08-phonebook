@@ -1,8 +1,6 @@
 import React from 'react';
 import style from './style.module.css';
-// import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-// import contactsActions from '../redux/contacts-actions/contacts-actions';
 import {setFilter } from '../redux/filterSlise';
 import {selectFilter} from '../redux/selectors'
 
@@ -26,21 +24,3 @@ export default function Filter() {
     </label>  
     )
 };
-
-// const mapStateToProps = (state) => ({
-//   value: state.contacts.filter
-// })
-
-// const mapDispatchToProps = dispatch => ({
-//     onChange: (e) => dispatch(contactsActions.changeFilter(e.target.value)),
-    
-// })
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
-
-// Filter.propTypes = {
-//     value: PropTypes.string.isRequired,
-//     onChange: PropTypes.func.isRequired,
-// };
-

@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 
 import { useDispatch, useSelector } from 'react-redux';
-// import contactsActions from '.././redux/contacts-actions/contacts-actions';
 
 import style from '../ContactForm/style.module.css';
-// import { getContacts } from '../redux/contactsSlise';
 import {selectContacts} from '../redux/selectors'
 import {addContact} from '../redux/operations';
 
 import { nanoid } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
-// import PropTypes from 'prop-types';
 
 
 
@@ -36,7 +33,6 @@ export default function ContactForm() {
        return;
     }
 
-    //  onSubmit({ id: nanoid(), name, number })
      dispatch(addContact(
        contact
      ));
@@ -114,20 +110,3 @@ export default function ContactForm() {
          );
   
 };
-
-
-// const mapDispatchToProps = dispatch => ({
- 
-//   onSubmit: ( {name, number} ) => {
-//       const id = nanoid();
-//     const contact = { id, name, number };
-//     dispatch(contactsActions.addContacts(contact));
-//   }
-// });
-
-// export default connect(mapDispatchToProps)(ContactForm);
-
-
-// ContactForm.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };

@@ -22,6 +22,11 @@
     cursor: pointer;
 }
 
+.btn:hover {
+    background-color: rgb(235, 181, 120);
+    color: rgb(255, 255, 255);
+}
+
 .Btn_list {
     background: #267bef;
     color: #FFFFFF;
