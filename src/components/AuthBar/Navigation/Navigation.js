@@ -6,8 +6,10 @@ import {NavContainer, LinkElem} from './Navigation.styled'
 
 export const Navigation = () => (
   <NavContainer>
-    <LinkElem to="/" exact >
-      Главная
+    <LinkElem to="/"
+      exact
+    >
+      Home
     </LinkElem>
 
     <LinkElem
@@ -16,7 +18,7 @@ export const Navigation = () => (
     //   style={styles.link}
     //   activeStyle={styles.activeLink}
     >
-      Заметки
+      Contacts
     </LinkElem>
   </NavContainer>
 );

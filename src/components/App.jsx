@@ -7,13 +7,13 @@ import style from './style.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from "./ContactList/ContactList";
-import { UserMenu } from './AuthBar/UserMenu/UserMenu';
-import {AppBar} from './AuthBar/AppBar/AppBar';
+
 import HomeView from "./Views/HomeView";
-import LoginView from "./Views/LoginView";
+import LoginView from "./Views/LoginViews/LoginView";
 import { Layout } from './Layout/Layout';
 import Container from '../components/Container/Container';
-import {Navigation} from './AuthBar/Navigation/Navigation'
+import { Navigation } from './AuthBar/Navigation/Navigation';
+import {RegisterView} from './Views/RegisterViews/RegisterView';
 
 
 export default function App ()  {
@@ -24,8 +24,10 @@ export default function App ()  {
           <Routes>
           <Route path="/" element={<Layout/>}>
               <Route index element={<HomeView/>} />
+               <Route path="/login" element={<LoginView/>}/>
+               <Route path="/register" element={<RegisterView/>}/>
           </Route>
-           
+          
             {/* <Route path="/register"  />
             <Route path="/login" component={<LoginView/>}/>
             <Route path="/contacts"/> */}

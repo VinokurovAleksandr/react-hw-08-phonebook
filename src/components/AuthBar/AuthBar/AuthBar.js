@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {AuthNavContainer, AuthNavLink} from './AuthBur.styled';
 
 
@@ -12,15 +11,14 @@ export const AuthNav = () => (
     //   style={styles.link}
     //   activeStyle={styles.activeLink}
     >
-      Регистрация
+      Registration
     </AuthNavLink>
     <AuthNavLink
       to="/login"
       exact
-    //   style={styles.link}
-    //   activeStyle={styles.activeLink}
+   
     >
-      Логин
+      Log in
     </AuthNavLink>
   </AuthNavContainer>
 );

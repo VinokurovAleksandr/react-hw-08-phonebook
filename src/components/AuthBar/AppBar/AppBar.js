@@ -1,14 +1,17 @@
 import { Navigation } from '../Navigation/Navigation';
 import {AuthNav} from '../AuthBar/AuthBar'
-import { Header } from './AppBar.styled';
+import { HeaderContainer } from './AppBar.styled';
+import {UserMenu} from '../UserMenu/UserMenu';
 
 export const AppBar = () => {
 
     return (
-    <Header>
-        <Navigation />
-        <AuthNav/>
-    </Header>
+    <HeaderContainer>
+            <Navigation />
+            <AuthNav />
+             <UserMenu/>
+            
+    </HeaderContainer>
 
     )
 };

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 
-export const Header = styled.header`
-    display: 'flex',
-    justyfiContetnt:'space-between',
-    alignItems: 'center',
-    border: '1px solid #2A363B',
-
-`
+export const HeaderContainer = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2A363B;
+`;
