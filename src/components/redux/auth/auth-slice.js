@@ -22,11 +22,7 @@ const initialState = {
 //     state.items = payload;
 // };
 
-const authOperationRegisterFulfielled = (state, { payload }) => {
-    state.isLoading = false;
-    state.error = null;
-    state.items = payload;
-};
+const authOperationRegisterFulfielled = (state, action) => {};
 
 const authSlice = createSlice({
     name: 'auth',

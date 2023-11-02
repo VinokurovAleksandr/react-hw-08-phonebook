@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {useState  } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import {
   RegisterContainer,
   RegisterForm,
@@ -8,27 +8,41 @@ import {
   RegisterTitle,
   RegisterInput
 } from './RegisterViews.styled';
+
 // import { authOperations } from '../redux/auth';
+import {register} from '../../redux/auth/auth-operation'
 
 
 export const RegisterView = () => {
-  //   state = {
-  //     name: '',
-  //     email: '',
-  //     password: '',
-  //   };
 
-  //   handleChange = ({ target: { name, value } }) => {
-  //     this.setState({ [name]: value });
-  //   };
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  //   handleSubmit = e => {
-  //     e.preventDefault();
 
-  //     this.props.onRegister(this.state);
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value)
+      case 'email':
+        return setEmail(value)
+      case 'password':
+        return setPassword(value)
+      default:
+        return;
+    }
+  };
 
-  //     this.setState({ name: '', email: '', password: '' });
-  //   };
+
+    const handleSubmit = e => {
+      e.preventDefault();
+
+      dispatch(register({ name, email, password }));
+      setName('');
+      setEmail('');
+      setPassword('');
+    };
 
 
 
@@ -37,7 +51,7 @@ export const RegisterView = () => {
       <RegisterTitle>Страница регистрации</RegisterTitle>
 
       <RegisterForm
-        //   onSubmit={this.handleSubmit}
+          onSubmit={handleSubmit}
          
         autoComplete="off"
       >
@@ -46,8 +60,8 @@ export const RegisterView = () => {
           <RegisterInput
             type="text"
             name="name"
-          //   value={name}
-          //   onChange={this.handleChange}
+            value={name}
+            onChange={handleChange}
           />
         </Registerlabel>
 
@@ -56,8 +70,8 @@ export const RegisterView = () => {
           <RegisterInput
             type="email"
             name="email"
-          //   value={email}
-          //   onChange={this.handleChange}
+            value={email}
+            onChange={handleChange}
           />
         </Registerlabel>
 
@@ -66,8 +80,8 @@ export const RegisterView = () => {
           <RegisterInput
             type="password"
             name="password"
-          //   value={password}
-          //   onChange={this.handleChange}
+            value={password}
+            onChange={handleChange}
           />
         </Registerlabel>
 
