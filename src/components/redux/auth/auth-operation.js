@@ -3,25 +3,61 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-
+ 
+const token = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`
+    },
+    unset() {
+        axios.defaults.headers.common.Authorization = ''
+    },
+};
+ 
+/*  *Post @ /user/singup
+    *body: {name,email, password}
+    *після успішної рег. добавляємо токен в HTTP -заголовок
+*/
 
 export const register = createAsyncThunk('auth/register',
     async credentials => {
     try {
         const { data } = await axios.post('/users/signup', credentials);
+        token.set(data.token);
         return data;
     } catch {
         const message = 'Error';
         return message;
     }
-});
+    });
 
-export const login = createAsyncThunk('auth/login', async credentials => {
+    /*  *Post @ 'users/login'
+    *body: {mail, password}
+    *після успішної рег. добавляємо токен в HTTP -заголовок
+*/
+
+export const login = createAsyncThunk('auth/login',
+    async credentials => {
     try {
         const { data } = await axios.post('/users/login', credentials);
+        token.set(data.token);
         return data;
     } catch {
         const message = 'LogIn Error';
+        return message;
+    }
+    });
+
+    /*  *Post @ 'user/logout'
+    *headers : Authorization: Bearer token
+    * після успишноо логаута  бвидаляємо токан із HTTP-Заголовка
+*/
+
+export const logOut = createAsyncThunk('auth/logout', async () => {
+    try {
+        await axios.post('/users/logout');
+        token.unset();
+    } catch {
+        const message = 'LogOut failed';
         return message;
     }
 });

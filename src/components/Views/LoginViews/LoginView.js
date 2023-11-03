@@ -9,6 +9,9 @@ import {
   LoginTitle,
 } from './LoginView.styled';
 
+import {login} from '../../redux/auth/auth-operation';
+
+
 
 
 export default function LoginView() {
@@ -16,30 +19,33 @@ export default function LoginView() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-//     const hendleChange = ({ target: { name, value } }) => {
-//     switch (name) {
-//         case 'email':
-//             return setEmail(value);
-//         case 'password':
-//             return setPassword(value);
-//         default:
-//             return;
-//     }
-// };
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return
+    }
+  };
 
-    // const handleSubmit = e => {
-    //     e.prevauntDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
 
-    //     dispatch()
+    dispatch(login({ email, password }));
+    setEmail('')
+    setPassword('')
+  };
 
-    // };
+
 
     return (
            <LoginContainer>
         <LoginTitle>Страница логина</LoginTitle>
 
         <LoginForm
-          // onSubmit={this.handleSubmit}
+          onSubmit={handleSubmit}
           
           autoComplete="off"
         >
@@ -49,7 +55,7 @@ export default function LoginView() {
               type="email"
               name="email"
               value={email}
-              // onChange={this.handleChange}
+              onChange={handleChange}
             />
           </LoginLabel>
 
@@ -59,7 +65,7 @@ export default function LoginView() {
               type="password"
               name="password"
               value={password}
-              // onChange={this.handleChange}
+              onChange={handleChange}
             />
           </LoginLabel>
 

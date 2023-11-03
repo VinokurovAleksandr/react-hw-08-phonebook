@@ -16,5 +16,6 @@ export const Name = styled.span`
 ` ;
 
 export const Btn = styled.button`
-
+    padding: 12px,
+    
 ` ;
