@@ -1,23 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { lazy, Suspense } from 'react';
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 
 import style from './style.module.css';
-
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import ContactList from "./ContactList/ContactList";
 
 import HomeView from "./Views/HomeView";
 import LoginView from "./Views/LoginViews/LoginView";
 import { Layout } from './Layout/Layout';
-import Container from '../components/Container/Container';
-import { Navigation } from './AuthBar/Navigation/Navigation';
+// import Container from '../components/Container/Container';
 import { RegisterView } from './Views/RegisterViews/RegisterView';
 import { ContactsView } from './Views/ContactsView/ContactsView';
+import { useDispatch } from "react-redux";
 
+import {fetchCurrentUser} from './redux/auth/auth-operation';
 
-export default function App ()  {
+export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser())
+  }, [dispatch]);
+
   return (
     <>
       {/* <AppBar /> */}

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {register, login,logOut} from '../auth/auth-operation';
-// import moduleName from 'module'
 
 
 
