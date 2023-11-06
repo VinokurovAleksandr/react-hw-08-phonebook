@@ -33,7 +33,9 @@ const authOperationLoginFulfielled = (state, action) => {
     state.isLoggedIn = true;
 };
 const authOperationLogOutFulfielled = (state, action) => {
-    state = initialState;
+    state.user = { name: null, email: null,};
+    state.token = null;
+    state.isLoggedIn = false;
 };
 
 const authSlice = createSlice({

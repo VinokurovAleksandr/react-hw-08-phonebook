@@ -13,7 +13,8 @@ import LoginView from "./Views/LoginViews/LoginView";
 import { Layout } from './Layout/Layout';
 import Container from '../components/Container/Container';
 import { Navigation } from './AuthBar/Navigation/Navigation';
-import {RegisterView} from './Views/RegisterViews/RegisterView';
+import { RegisterView } from './Views/RegisterViews/RegisterView';
+import { ContactsView } from './Views/ContactsView/ContactsView';
 
 
 export default function App ()  {
@@ -24,10 +25,11 @@ export default function App ()  {
           <Routes>
           <Route path="/" element={<Layout/>}>
               <Route index element={<HomeView/>} />
-               <Route path="/login" element={<LoginView/>}/>
-               <Route path="/register" element={<RegisterView/>}/>
+              <Route path="/login" element={<LoginView/>}/>
+              <Route path="/register" element={<RegisterView />} />
+              <Route path="/contacts" element={ <ContactsView/>} /> 
           </Route>
-          
+       
             {/* <Route path="/register"  />
             <Route path="/login" component={<LoginView/>}/>
             <Route path="/contacts"/> */}

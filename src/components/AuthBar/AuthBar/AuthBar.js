@@ -7,7 +7,7 @@ export const AuthNav = () => (
   <AuthNavContainer>
     <AuthNavLink
       to="/register"
-      exact
+      // exact
     //   style={styles.link}
     //   activeStyle={styles.activeLink}
     >
@@ -15,7 +15,7 @@ export const AuthNav = () => (
     </AuthNavLink>
     <AuthNavLink
       to="/login"
-      exact
+      // exact
    
     >
       Log in

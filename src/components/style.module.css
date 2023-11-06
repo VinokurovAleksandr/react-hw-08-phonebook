@@ -12,14 +12,7 @@
     flex-direction: column;
     margin-top: 10px;
 } */
-.phonebook {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* margin-left: 10px; */
-    margin: 0 auto;
-}
+
 /* .label_name{ 
     display: block;
     margin-top: 10px;
@@ -32,8 +25,4 @@ input{
     display: block;
 }
 
-.name{ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
