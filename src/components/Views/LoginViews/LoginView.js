@@ -11,6 +11,9 @@ import {
 
 import {login} from '../../redux/auth/auth-operation';
 
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 
 
 
@@ -41,37 +44,70 @@ export default function LoginView() {
 
 
     return (
-           <LoginContainer>
-        <LoginTitle>Страница логина</LoginTitle>
+          <LoginContainer>
+         {/* <LoginTitle>Страница логина</LoginTitle>
 
-        <LoginForm
-          onSubmit={handleSubmit}
+        // <LoginForm
+        //   onSubmit={handleSubmit}
           
-          autoComplete="off"
-        >
-          <LoginLabel >
-            Почта
-            <LoginInput
+        //   autoComplete="off"
+        // >
+        //   <LoginLabel >
+        //     Почта
+        //     <LoginInput
+        //       type="email"
+        //       name="email"
+        //       value={email}
+        //       onChange={handleChange}
+        //     />
+        //   </LoginLabel>
+
+        //   <LoginLabel >
+        //     Пароль
+        //     <LoginInput
+        //       type="password"
+        //       name="password"
+        //       value={password}
+        //       onChange={handleChange}
+        //     />
+        //   </LoginLabel>
+
+        //   <LoginBtn type="submit">Войти</LoginBtn>
+        // </LoginForm> */}
+
+           <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+            <Form.Control
               type="email"
+              placeholder="Enter email" 
               name="email"
               value={email}
               onChange={handleChange}
-            />
-          </LoginLabel>
+              />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
 
-          <LoginLabel >
-            Пароль
-            <LoginInput
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+            <Form.Control
               type="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
-          </LoginLabel>
+              placeholder="Password" 
+               name="password"
+               value={password}
+               onChange={handleChange}
+              />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
 
-          <LoginBtn type="submit">Войти</LoginBtn>
-        </LoginForm>
       </LoginContainer>
+  
+
     )
     
 };

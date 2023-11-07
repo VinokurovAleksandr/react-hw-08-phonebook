@@ -4,7 +4,7 @@ import  ContactList  from '../../ContactList/ContactList';
 // import style from '../style.module.css';
 import {ContactsContainer, PhonebookTitle, ContactsTitle, FilterContainer} from './ContactsView.styled';
 
-export const ContactsView = () => {
+ const ContactsView = () => {
 
     return (
         <>
@@ -27,3 +27,4 @@ export const ContactsView = () => {
     )
 };
 
+export default ContactsView;

@@ -1,18 +1,25 @@
 import React, { useEffect } from "react";
 import { lazy, Suspense } from 'react';
 import { Routes, Route, } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import style from './style.module.css';
 
-import HomeView from "./Views/HomeView";
-import LoginView from "./Views/LoginViews/LoginView";
-import { Layout } from './Layout/Layout';
+// import HomeView from "./Views/HomeView";
+// import LoginView from "./Views/LoginViews/LoginView";
+// import { Layout } from './Layout/Layout';
 // import Container from '../components/Container/Container';
-import { RegisterView } from './Views/RegisterViews/RegisterView';
-import { ContactsView } from './Views/ContactsView/ContactsView';
+// import { RegisterView } from './Views/RegisterViews/RegisterView';
+// import { ContactsView } from './Views/ContactsView/ContactsView';
 import { useDispatch } from "react-redux";
 
 import {fetchCurrentUser} from './redux/auth/auth-operation';
+
+const Layout = lazy(() => import('./Layout/Layout'));
+const RegisterView = lazy(() => import('./Views/RegisterViews/RegisterView'));
+const ContactsView = lazy(() => import('./Views/ContactsView/ContactsView'));
+const HomeView = lazy(() => import('./Views/HomeView'));
+const LoginView = lazy(() => import('./Views/LoginViews/LoginView'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,20 +30,18 @@ export default function App() {
 
   return (
     <>
-      {/* <AppBar /> */}
-      {/* <Navigation/> */}
-          <Routes>
+     
+      <Suspense fallback={<p>... Loading </p>}>
+        <Routes>
           <Route path="/" element={<Layout/>}>
               <Route index element={<HomeView/>} />
               <Route path="/login" element={<LoginView/>}/>
               <Route path="/register" element={<RegisterView />} />
               <Route path="/contacts" element={ <ContactsView/>} /> 
           </Route>
-       
-            {/* <Route path="/register"  />
-            <Route path="/login" component={<LoginView/>}/>
-            <Route path="/contacts"/> */}
-        </Routes>
+   
+          </Routes>
+             </Suspense>
       
      </>
          

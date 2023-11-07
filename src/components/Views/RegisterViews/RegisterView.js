@@ -13,7 +13,7 @@ import {
 import {register} from '../../redux/auth/auth-operation'
 
 
-export const RegisterView = () => {
+ const RegisterView = () => {
 
   const dispatch = useDispatch();
   const [name, setName] = useState('');
@@ -91,6 +91,8 @@ export const RegisterView = () => {
   );
 
 };
+
+export default RegisterView;
 
 // const mapDispatchToProps = {
 //   onRegister: authOperations.register,

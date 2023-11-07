@@ -10,6 +10,7 @@ import styled from 'styled-components';
 //   },
 // };
 export const LoginContainer = styled.div`
+     width: 200px;
      margin-left:20px;
 `;
 

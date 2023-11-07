@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 // import { Toaster } from 'react-hot-toast';
 import { AppBar } from '../AuthBar/AppBar/AppBar';
 
-export const Layout = () => {
+ const Layout = () => {
   return (
     <>
         <AppBar />
@@ -17,3 +17,5 @@ export const Layout = () => {
     
   );
 };
+
+export default Layout;
