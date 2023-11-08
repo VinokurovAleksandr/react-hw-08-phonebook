@@ -21,6 +21,9 @@ const ContactsView = lazy(() => import('./Views/ContactsView/ContactsView'));
 const HomeView = lazy(() => import('./Views/HomeView'));
 const LoginView = lazy(() => import('./Views/LoginViews/LoginView'));
 const PrivateRoute = lazy(() => import('./AuthBar/PrivateRoute'));
+const PublicRoute = lazy(() => import('./AuthBar/PublicRoute'));
+
+
 
 export default function App() {
   const dispatch = useDispatch();
@@ -36,10 +39,18 @@ export default function App() {
       <Routes>
         
           <Route path="/" element={<Layout/>}>
-              <Route index element={<HomeView/>} />
-              <Route path="/login" element={<LoginView/>}/>
+            <Route index element={<HomeView />} />
+               {/* <Route path="/login" element={<LoginView/>}/> */}
+            <Route
+              path="login"
+              element={
+                <PublicRoute
+                  redirectTo="/contacts"
+                  
+                  component={<LoginView />}/> }/>
+           
               <Route path="/register" element={<RegisterView />} />
-            {/* <Route path="/contacts" element={<ContactsView />} />  */}
+             {/* <Route path="/contacts" element={<ContactsView />} />  */}
             <Route
               path="/contacts"
               element={
@@ -47,7 +58,7 @@ export default function App() {
                   redirectTo="/login"
                   component={<ContactsView />} 
                 />} /> 
-            <Route path="*" element={<HomeView />}/>
+            {/* <Route path="*" element={<Layout />}/> */}
           
           </Route>
            </Routes>
@@ -55,33 +66,6 @@ export default function App() {
       
      </>
          
-
-    
-      
-   
-    
-   
-    
-     
-      
-
-         
-      // {/* <div className={style.phonebook}>
-      //    <h2>
-      //     Phonebook
-      //   </h2>
-      //   <ContactForm />
-        
-      //       <div>
-      //     <h2 className={style.name}>Contacts</h2>
-      //     <Filter  />
-      //     <ContactList
-      //     />
-         
-      // </div>
-      //    </div> */}
-    
-  
       
     )
   };
