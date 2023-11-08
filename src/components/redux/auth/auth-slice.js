@@ -3,7 +3,7 @@ import {
     register,
     login,
     logOut,
-    fetchCurrentUser,
+    refreshCurrentUser,
 } from '../auth/auth-operation';
 
 
@@ -15,6 +15,7 @@ const initialState = {
     },
     token: null,
     isLoggedIn: false,
+    isRefreshing: false,
 };
 
 // const isPendingAction = state => {
@@ -41,7 +42,7 @@ const authOperationLogOutFulfielled = (state, _) => {
     state.token = null;
     state.isLoggedIn = false;
 };
-const authOperationcurrentUserFulfielled = (state, action) => {
+const authOperationRefreshUserFulfielled = (state, action) => {
     state.user = action.payload;
     state.isLoggedIn = true;
 };
@@ -54,7 +55,7 @@ const authSlice = createSlice({
             .addCase(register.fulfilled, authOperationRegisterFulfielled)
             .addCase(login.fulfilled, authOperationLoginFulfielled)
             .addCase(logOut.fulfilled, authOperationLogOutFulfielled)
-            .addCase(fetchCurrentUser.fulfilled, authOperationcurrentUserFulfielled)
+            .addCase(refreshCurrentUser.fulfilled, authOperationRefreshUserFulfielled)
             
     },
 });
