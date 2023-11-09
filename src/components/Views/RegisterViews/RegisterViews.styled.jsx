@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const RegisterContainer = styled.div`
     margin-left: 20px;
+    width: 350px
 `;
 
 export const RegisterForm = styled.form`

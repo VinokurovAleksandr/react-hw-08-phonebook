@@ -32,30 +32,54 @@ const authOperationRegisterFulfielled = (state, action) => {
     state.token = action.payload.token;
     state.isLoggedIn = true;
 };
-const authOperationLoginFulfielled = (state, action) => {
-    state.user = action.payload.user;
-    state.token = action.payload.token;
-    state.isLoggedIn = true;
-};
-const authOperationLogOutFulfielled = (state, _) => {
-    state.user = { name: null, email: null,};
-    state.token = null;
-    state.isLoggedIn = false;
-};
-const authOperationRefreshUserFulfielled = (state, action) => {
-    state.user = action.payload;
-    state.isLoggedIn = true;
-};
+// const authOperationLoginFulfielled = (state, action) => {
+//     state.user = action.payload.user;
+//     state.token = action.payload.token;
+//     state.isLoggedIn = true;
+// };
+// const authOperationLogOutFulfielled = (state, _) => {
+//     state.user = { name: null, email: null,};
+//     state.token = null;
+//     state.isLoggedIn = false;
+// };
+// const authOperationRefreshUserFulfielled = (state, action) => {
+//     state.user = action.payload;
+//     state.isLoggedIn = true;
+//     state.isRefreshing = false;
+// };
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     extraReducers: builder => {
-         builder
-            .addCase(register.fulfilled, authOperationRegisterFulfielled)
-            .addCase(login.fulfilled, authOperationLoginFulfielled)
-            .addCase(logOut.fulfilled, authOperationLogOutFulfielled)
-            .addCase(refreshCurrentUser.fulfilled, authOperationRefreshUserFulfielled)
+        builder
+            .addCase(register.fulfilled, (state, action) => {
+                state.user = action.payload.user;
+                state.token = action.payload.token;
+                state.isLoggedIn = true;
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.user = action.payload.user;
+                state.token = action.payload.token;
+                state.isLoggedIn = true;
+            })
+            .addCase(logOut.fulfilled, (state, _) => {
+                state.user = { name: null, email: null,};
+                state.token = null;
+                state.isLoggedIn = false;
+            })
+            
+            .addCase(refreshCurrentUser.fulfilled, (state, action) => {
+                state.user = action.payload;
+                state.isLoggedIn = true;
+                state.isRefreshing = false;
+            })
+            .addCase(refreshCurrentUser.pending, (state, action) => {
+                state.isRefreshing = true
+            })
+            .addCase(refreshCurrentUser.rejected, (state) => { 
+                state.isRefreshing = false
+            })
             
     },
 });

@@ -1,24 +1,27 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
-import {NavContainer, LinkElem} from './Navigation.styled'
+import { NavContainer, LinkElem } from './Navigation.styled';
+import {authSelectors} from '../../redux/auth/'
+import { useSelector } from 'react-redux';
 
 
 
-export const Navigation = () => (
-  <NavContainer>
+
+export const Navigation = () => {
+const isLoggedIn =useSelector(authSelectors.getIsLoggedIn)
+
+  return (
+     <NavContainer>
     <LinkElem to="/"
       // exact
     >
       Home
     </LinkElem>
 
-    <LinkElem
+      {isLoggedIn &&   <LinkElem
       to="/contacts"
-      // exact
-    //   style={styles.link}
-    //   activeStyle={styles.activeLink}
-    >
-      Contacts
-    </LinkElem>
+    >Contacts
+    </LinkElem>}
+  
   </NavContainer>
-);
+)};
