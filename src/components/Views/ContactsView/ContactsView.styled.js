@@ -9,7 +9,7 @@ export const ContactsContainer = styled.div`
     /* margin-left: 10px; */
     margin: 0 auto;
 `;
-export const PhonebookTitle = styled.h1`
+export const PhonebookTitle = styled.h2`
    
 `;
 

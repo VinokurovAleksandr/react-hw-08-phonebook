@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 
 export const RegisterContainer = styled.div`
-    margin-left: 20px;
-    width: 350px
+
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
 `;
 
+export const RegisterTitle = styled.h2`
+display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    font-weight: 500;
+`
+
+
+
+
 export const RegisterForm = styled.form`
+
      width: 320px;
 `;
 
@@ -23,17 +36,3 @@ export const RegisterInput = styled.input`
 export const RegisterBtn = styled.button`
 
 `;
-export const RegisterTitle = styled.h1`
-
-`;
-
-// const styles = {
-//   form: {
-//     width: 320,
-//   },
-//   label: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     marginBottom: 15,
-//   },
-// };

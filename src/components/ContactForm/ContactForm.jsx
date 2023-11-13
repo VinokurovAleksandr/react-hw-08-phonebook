@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 
 import { useDispatch, useSelector } from 'react-redux';
-
-import style from '../ContactForm/style.module.css';
 import {selectContacts} from '../redux/selectors'
 import {addContact} from '../redux/operations';
 
 import { nanoid } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
+
+import {
+  FormPhonebook,
+  FormBtn,
+  LabelName,
+  InputlName
+} from './ContactForm.styled';
 
 
 
@@ -63,16 +68,13 @@ export default function ContactForm() {
   
   
   return ( 
-             <form
-          className={style.form_phonebook}
+             <FormPhonebook
           onSubmit={handleSubmit}
         >
-          <label
-            className={style.label_name}
+          <LabelName
             htmlFor={name}
           >
-        <input
-          className={style.input_style}
+        <InputlName
             type="text"
               value={name}
               onChange={handleChangeAddContacts}
@@ -83,14 +85,12 @@ export default function ContactForm() {
           required
            placeholder=" Name "
           />
-          </label>
-            <label
-              className={style.label_name}
+          </LabelName>
+            <LabelName
           htmlFor={number}
           >
            
-        <input
-          className={style.input_style}
+        <InputlName
               type="tel"
               // id={number}
               value={number}
@@ -101,12 +101,12 @@ export default function ContactForm() {
           required
           placeholder=" Number "
             />
-          </label>
+          </LabelName>
           
-          <button
-            className={style.formBtn}
-            type="submit">Add contact</button>  
-        </form>
+          <FormBtn
+
+            type="submit">Add contact</FormBtn>  
+        </FormPhonebook>
          );
   
 };

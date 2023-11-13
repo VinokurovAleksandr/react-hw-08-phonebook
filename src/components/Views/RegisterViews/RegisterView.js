@@ -5,14 +5,10 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import {
   RegisterContainer,
-  RegisterForm,
-  Registerlabel,
-  RegisterBtn,
   RegisterTitle,
-  RegisterInput
+
 } from './RegisterViews.styled';
 
-// import { authOperations } from '../redux/auth';
 import {register} from '../../redux/auth/auth-operation';
 
 
@@ -54,15 +50,15 @@ import {register} from '../../redux/auth/auth-operation';
 
    return (
      <>
-      <RegisterTitle>Страница регистрации</RegisterTitle>
+       <RegisterTitle>Registration form</RegisterTitle>
     <RegisterContainer>
       
-
-      <Form
+         
+          <Form
         onSubmit={handleSubmit}
         autoComplete="off">
       <Form.Group className="mb-3" controlId="formBasicText">
-        <Form.Label>Name</Form.Label>
+        {/* <Form.Label>Name</Form.Label> */}
           <Form.Control
             type="text"
             placeholder="Enter name" 
@@ -73,7 +69,7 @@ import {register} from '../../redux/auth/auth-operation';
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        {/* <Form.Label>Email address</Form.Label> */}
           <Form.Control
             type="email"
             placeholder="Enter email" 
@@ -84,7 +80,7 @@ import {register} from '../../redux/auth/auth-operation';
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        {/* <Form.Label>Password</Form.Label> */}
           <Form.Control
             type="password"
             placeholder="Password" 
@@ -97,58 +93,10 @@ import {register} from '../../redux/auth/auth-operation';
         Submit
       </Button>
     </Form>
-      
-      {/* ------------------------------------------------- */}
-      {/* <RegisterTitle>Страница регистрации</RegisterTitle>
-
-      <RegisterForm
-          onSubmit={handleSubmit}
-         
-        autoComplete="off"
-      >
-        <Registerlabel>
-          Имя
-          <RegisterInput
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
-        </Registerlabel>
-
-        <Registerlabel >
-          Почта
-          <RegisterInput
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </Registerlabel>
-
-        <Registerlabel>
-          Пароль
-          <RegisterInput
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </Registerlabel>
-
-        <RegisterBtn type="submit">Зарегистрироваться</RegisterBtn>
-      </RegisterForm> */}
     </RegisterContainer>
      </>
-   
   );
 
 };
 
 export default RegisterView;
-
-// const mapDispatchToProps = {
-//   onRegister: authOperations.register,
-// };
-
-// export default connect(null, mapDispatchToProps)(RegisterView);

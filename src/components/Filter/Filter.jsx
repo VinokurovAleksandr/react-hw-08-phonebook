@@ -1,8 +1,12 @@
 import React from 'react';
-import style from './style.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {setFilter } from '../redux/filterSlise';
-import {selectFilter} from '../redux/selectors'
+import { selectFilter } from '../redux/selectors';
+import {
+    FilterContainer,
+    FindContacts,
+    FilterInput
+} from './Filter.styled';
 
 export default function Filter() {
     
@@ -14,13 +18,14 @@ export default function Filter() {
     };
 
     return (
-        <label
-        className={style.find_contacts}
-        type='name'
-        value={filter}
-        onChange={onChange}
-        >Find contacts by name
-        <input className={style.filter_input} />
-    </label>  
+        <FilterContainer>
+        <FindContacts
+            type='name'
+            value={filter}
+            onChange={onChange}
+            >Find contacts by name
+            <FilterInput  />
+        </FindContacts> 
+        </FilterContainer>      
     )
 };

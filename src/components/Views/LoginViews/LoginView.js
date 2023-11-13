@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
-  LoginForm,
-  LoginLabel,
   LoginContainer,
-  LoginInput,
-  LoginBtn,
-  LoginTitle,
+ 
 } from './LoginView.styled';
 
 import {login} from '../../redux/auth/auth-operation';
@@ -43,41 +39,12 @@ export default function LoginView() {
 
 
 
-    return (
-          <LoginContainer>
-         {/* <LoginTitle>Страница логина</LoginTitle>
-
-        // <LoginForm
-        //   onSubmit={handleSubmit}
-          
-        //   autoComplete="off"
-        // >
-        //   <LoginLabel >
-        //     Почта
-        //     <LoginInput
-        //       type="email"
-        //       name="email"
-        //       value={email}
-        //       onChange={handleChange}
-        //     />
-        //   </LoginLabel>
-
-        //   <LoginLabel >
-        //     Пароль
-        //     <LoginInput
-        //       type="password"
-        //       name="password"
-        //       value={password}
-        //       onChange={handleChange}
-        //     />
-        //   </LoginLabel>
-
-        //   <LoginBtn type="submit">Войти</LoginBtn>
-        // </LoginForm> */}
-
+  return (
+      <>
+                <LoginContainer>
            <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+     
             <Form.Control
               type="email"
               placeholder="Enter email" 
@@ -91,7 +58,6 @@ export default function LoginView() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password" 
@@ -106,6 +72,8 @@ export default function LoginView() {
     </Form>
 
       </LoginContainer>
+      </>
+
   
 
     )

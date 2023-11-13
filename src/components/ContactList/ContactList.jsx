@@ -4,7 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import {selectContacts, selectFilter} from '../redux/selectors'
 import {deleteContact, fetchContacts} from '../redux/operations';
-import style from './contactList.module.css';
+import {
+    Container,
+    ContainList,
+    ContainItem,
+    ContainText,
+    BtnList,
+
+} from './ContainList.module';
 
 
 
@@ -26,30 +33,26 @@ const ContactList = () => {
  
 
     return (
-        <>
-            <div>
-                  <ul
-        className={style.list}>
+   
+            <Container>
+                  <ContainList>
             {visibleContacts.map(
                 ({ name, id, number }) => (
-                     <li
-                        className={style.item}
+                     <ContainItem
                         key={id}>
-                    <p>
+                    <ContainText>
                         {name}: {number}
-                    </p>
-                        <button
-                            className={style.btn}
+                    </ContainText>
+                        <BtnList
                             name='delete'
                             onClick={() => dispatch(deleteContact(id)) }>
                             delete
-                        </button>
-                    </li>
+                        </BtnList>
+                    </ContainItem>
                 )
             )}
-        </ul>
-            </div>          
-        </>
+        </ContainList>
+            </Container>          
     )
 };
 

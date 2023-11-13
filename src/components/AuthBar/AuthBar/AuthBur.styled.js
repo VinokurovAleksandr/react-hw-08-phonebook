@@ -9,12 +9,16 @@ export const AuthNavLink = styled(NavLink)`
      display: inline-block;
      text-decoration: none;
      padding: 12px;
-     fontWeight: 700;
+     font-weight: 700px;
     color: #2A363B;
 
 
     &.active {
-        color: #E84A5F;
+        color: white;
+    }
+
+    &:hover {
+         color: white;   
     }
 `;
 
