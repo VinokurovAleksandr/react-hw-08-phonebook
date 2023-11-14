@@ -70,13 +70,8 @@ export default function LoginView() {
         Submit
       </Button>
     </Form>
-
       </LoginContainer>
       </>
-
-  
-
-    )
-    
+    )  
 };
 

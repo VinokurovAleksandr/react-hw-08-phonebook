@@ -6,6 +6,8 @@ export const RegisterContainer = styled.div`
     justify-content: center;
     margin-top: 25px;
     /* width: 500px; */
+
+
 `;
 
 export const RegisterTitle = styled.h2`
