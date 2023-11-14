@@ -14,7 +14,6 @@ import {
 } from './ContainList.module';
 
 
-
 const ContactList = () => {
 
     const contacts = useSelector(selectContacts);
@@ -33,7 +32,6 @@ const ContactList = () => {
  
 
     return (
-   
             <Container>
                   <ContainList>
             {visibleContacts.map(
