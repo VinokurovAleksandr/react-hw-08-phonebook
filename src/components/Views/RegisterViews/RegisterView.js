@@ -58,7 +58,7 @@ import {register} from '../../redux/auth/auth-operation';
         onSubmit={handleSubmit}
         autoComplete="off">
       <Form.Group className="mb-3" controlId="formBasicText">
-        {/* <Form.Label>Name</Form.Label> */}
+        <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter name" 
@@ -69,7 +69,7 @@ import {register} from '../../redux/auth/auth-operation';
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        {/* <Form.Label>Email address</Form.Label> */}
+        <Form.Label>Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email" 
@@ -80,7 +80,7 @@ import {register} from '../../redux/auth/auth-operation';
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        {/* <Form.Label>Password</Form.Label> */}
+        <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password" 

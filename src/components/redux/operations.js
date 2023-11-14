@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-hot-toast';
-
-// axios.defaults.baseURL = 'https://651eea3a44a3a8aa4769320e.mockapi.io/api/v1/';
+import toast  from 'react-hot-toast';
+;
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 

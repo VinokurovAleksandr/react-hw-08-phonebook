@@ -26,6 +26,7 @@ export const ContainItem = styled.li`
     margin-bottom: 10px;
 `;
 export const ContainText = styled.p`
+    margin-top: 16px;
     text-align: center;
     padding-right: 5px;
 `;

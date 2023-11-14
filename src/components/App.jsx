@@ -5,17 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { refreshCurrentUser } from './redux/auth/auth-operation';
 import { useDispatch, useSelector } from "react-redux";
 
-import style from './style.module.css';
+
 import { authSelectors } from './redux/auth';
 import GrowExample from './Loader/Loader';
-// import HomeView from "./Views/HomeView";
-// import LoginView from "./Views/LoginViews/LoginView";
-// import { Layout } from './Layout/Layout';
-// import Container from '../components/Container/Container';
-// import { RegisterView } from './Views/RegisterViews/RegisterView';
-// import { ContactsView } from './Views/ContactsView/ContactsView';
-
-
 
 
 const Layout = lazy(() => import('./Layout/Layout'));

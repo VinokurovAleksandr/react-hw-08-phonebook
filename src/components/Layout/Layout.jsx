@@ -2,8 +2,9 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 // import { Toaster } from 'react-hot-toast';
 import { AppBar } from '../AuthBar/AppBar/AppBar';
-import GrowExample from '../Loader/Loader';
-import {LoyoutContainer} from './Loyout.styled'
+// import GrowExample from '../Loader/Loader';
+import { LoyoutContainer } from './Loyout.styled';
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -16,13 +17,11 @@ import {LoyoutContainer} from './Loyout.styled'
       <Suspense fallback={null}>
         <Outlet />
        </Suspense>
-       {/* <GrowExample/> */}
+        <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
       </LoyoutContainer>
-
-    
-    
-      
-      // {/* <Toaster position="top-right" reverseOrder={false} /> */}
     
   );
 };

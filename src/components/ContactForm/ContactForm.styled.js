@@ -25,7 +25,7 @@ export const FormBtn = styled.button`
     background-color: rgb(158, 232, 241);
     color: #ffff;
     border-color: revert  ;
-
+    }
   
 `;
 
